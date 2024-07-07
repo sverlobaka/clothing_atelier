@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <h1>Создание нового комплектующего:</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    <select id="consumable-type" name="consumable_type">
+      <option value="">Выберите тип комплектующего</option>
+      <option value="fabric">Ткань</option>
+      <option value="second_layer">Второй слой</option>
+      <option value="lace">Кружево</option>
+      <option value="accessories">Фурнитура</option>
+      <option value="glitter">Глиттер</option>
+    </select>
+    <button type="submit" class="btn btn-primary" style="margin-left: 20px;">Перейти к созданию</button>
+  </form>
+  <br>
+  <div>
+    <a href="{% url 'index' %}">Back to index</a>
+  </div>
+{% endblock %}

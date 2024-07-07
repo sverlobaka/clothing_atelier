@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {{ object.name }}
+{% endblock %}
+
+{% block body %}
+  <h1>{{ object.name }}</h1>
+
+  <ul>
+    <li>Артикул: {{ object.sku }}</li>
+    <li>Стоимость: {{ object.price }}</li>
+    <li>Наличие на складе (шт.): {{ object.stock_units }}</li>
+    <li>Поставщик: {{ object.supplier.name }}</li>
+  </ul>
+
+  <div>
+    <a href="{% url 'products:consumable_list' %}">К списку комплектующих</a>
+  </div>
+{% endblock %}

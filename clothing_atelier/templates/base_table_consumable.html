@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}My Site{% endblock %}</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+      white-space: nowrap; /* Сохраняет ширину колонок */
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .name-col { width: 20%; }
+    .sku-col { width: 15%; }
+    .price-col { width: 15%; }
+    .stock-col { width: 15%; }
+    .supplier-col { width: 20%; }
+  </style>
+</head>
+<body>
+  {% block body %}{% endblock %}
+</body>
+</html>

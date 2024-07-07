@@ -1,0 +1,82 @@
+from django.urls import path
+from . import views
+
+app_name = "products"
+
+urlpatterns = [
+    path(
+        "",
+         views.product_view,
+         name="products_list",
+    ),
+    path(
+        "collection_list/",
+        views.CollectionListViews.as_view(),
+        name="collection_list",
+    ),
+    path(
+        "collection_detail/<int:pk>/",
+        views.CollectionDetailView.as_view(),
+        name="collection_detail",
+    ),
+    path(
+        "consumable_list/",
+        views.consumable_list,
+        name="consumable_list"
+    ),
+    path(
+        "create_consumable/",
+        views.CreateConsumableView.as_view(),
+        name="create_consumable"
+    ),
+    path(
+        "create_consumable/create_fabric/",
+        views.FabricCreateView.as_view(),
+        name="create_fabric"
+    ),
+    path(
+        "fabric_detail/<int:pk>/",
+        views.FabricDetailView.as_view(),
+        name="fabric_detail"
+    ),
+    path(
+        "create_consumable/create_second_layer/",
+        views.Second_layerCreateView.as_view(),
+        name="create_second_layer"
+    ),
+    path(
+        "second_layer_detail/<int:pk>/",
+        views.Second_layerDetailView.as_view(),
+        name="second_layer_detail"
+    ),
+    path(
+        "create_consumable/create_accessories/",
+        views.AccessoriesCreateView.as_view(),
+        name="create_accessories"
+    ),
+    path(
+        "accessories_detail/<int:pk>/",
+        views.AccessoriesDetailView.as_view(),
+        name="accessories_detail"
+    ),
+    path(
+        "create_consumable/create_glitter/",
+        views.GlitterCreateView.as_view(),
+        name="create_glitter"
+    ),
+    path(
+        "glitter_detail/<int:pk>/",
+        views.GlitterDetailView.as_view(),
+        name="glitter_detail"
+    ),
+    path(
+        "create_consumable/create_lace/",
+        views.GlitterCreateView.as_view(),
+        name="create_lace"
+    ),
+    path(
+        "lace_detail/<int:pk>/",
+        views.LaceDetailView.as_view(),
+        name="lace_detail"
+    ),
+]

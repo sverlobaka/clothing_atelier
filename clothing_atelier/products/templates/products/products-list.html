@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Products
+{% endblock %}
+
+{% block body %}
+  <h1>Products:</h1>
+  {% if products %}
+    <ul>
+      {% for product in products %}
+        <li>
+          <strong>{{ product.name }}</strong> <em>({{ product.collection.name }})</em>.
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <h2>No products yet!</h2>
+  {% endif %}
+  <div>
+    <a href="{% url 'index' %}">Back to index</a>
+  </div>
+
+{% endblock %}

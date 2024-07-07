@@ -1,0 +1,187 @@
+{% extends 'base_table_consumable.html' %}
+
+{% block body %}
+  <h1>Комплектующие:</h1>
+
+  <div style="display: flex; align-items: center;">
+    <div>
+      <select id="component-type" onchange="showTable(this.value)">
+        <option value="">Выберите тип комплектующих</option>
+        <option value="fabrics">Ткань</option>
+        <option value="second_layers">Второй слой</option>
+        <option value="laces">Кружево</option>
+        <option value="accessories">Фурнитура</option>
+        <option value="glitters">Глиттер</option>
+      </select>
+    </div>
+    <form action="{% url 'products:create_consumable' %}" method="get" style="margin-left: 20px;">
+      <button type="submit" class="btn btn-success">Создать новые комплектующие</button>
+    </form>
+  </div>
+
+  <div id="fabrics" class="component-table" style="display: none;">
+    <h1>Ткань</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>название</th>
+          <th>артикул</th>
+          <th>стоимость за м.п.</th>
+          <th>наличие на складе м.п.</th>
+          <th>поставщик</th>
+          <th>Действия</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for fabric in fabrics %}
+          <tr>
+            <td>{{ fabric.name }}</td>
+            <td>{{ fabric.sku }}</td>
+            <td>{{ fabric.price|floatformat:2 }}</td>
+            <td>{{ fabric.stock_meters }}</td>
+            <td>{{ fabric.supplier.name }}</td>
+            <td><form action="{% url 'products:fabric_detail' pk=fabric.pk %}" method="get">
+              <button type="submit">Подробнее</button>
+            </form></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div id="second_layers" class="component-table" style="display: none;">
+    <h1>Второй слой</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>название</th>
+          <th>артикул</th>
+          <th>стоимость за м.п.</th>
+          <th>наличие на складе м.п.</th>
+          <th>поставщик</th>
+          <th>Действия</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for second_layer in second_layers %}
+          <tr>
+            <td>{{ second_layer.name }}</td>
+            <td>{{ second_layer.sku }}</td>
+            <td>{{ second_layer.price|floatformat:2 }}</td>
+            <td>{{ second_layer.stock_meters }}</td>
+            <td>{{ second_layer.supplier.name }}</td>
+            <td><form action="{% url 'products:second_layer_detail' pk=second_layer.pk %}" method="get">
+              <button type="submit">Подробнее</button>
+            </form></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div id="laces" class="component-table" style="display: none;">
+    <h1>Кружево</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>название</th>
+          <th>артикул</th>
+          <th>стоимость за м.п.</th>
+          <th>наличие на складе м.п.</th>
+          <th>поставщик</th>
+          <th>Действия</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for lace in laces %}
+          <tr>
+            <td>{{ lace.name }}</td>
+            <td>{{ lace.sku }}</td>
+            <td>{{ lace.price|floatformat:2 }}</td>
+            <td>{{ lace.stock_meters }}</td>
+            <td>{{ lace.supplier.name }}</td>
+            <td><form action="{% url 'products:lace_detail' pk=lace.pk %}" method="get">
+              <button type="submit">Подробнее</button>
+            </form></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div id="accessories" class="component-table" style="display: none;">
+    <h1>Фурнитура</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>название</th>
+          <th>артикул</th>
+          <th>стоимость</th>
+          <th>наличие на складе шт.</th>
+          <th>поставщик</th>
+          <th>Действия</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for accessory in accessories %}
+          <tr>
+            <td>{{ accessory.name }}</td>
+            <td>{{ accessory.sku }}</td>
+            <td>{{ accessory.price|floatformat:2 }}</td>
+            <td>{{ accessory.stock_units }}</td>
+            <td>{{ accessory.supplier.name }}</td>
+            <td><form action="{% url 'products:accessories_detail' pk=accessory.pk %}" method="get">
+              <button type="submit">Подробнее</button>
+            </form></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div id="glitters" class="component-table" style="display: none;">
+    <h1>Глиттер</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>название</th>
+          <th>артикул</th>
+          <th>стоимость</th>
+          <th>наличие на шт.</th>
+          <th>поставщик</th>
+          <th>Действия</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for glitter in glitters %}
+          <tr>
+            <td>{{ glitter.name }}</td>
+            <td>{{ glitter.sku }}</td>
+            <td>{{ glitter.price|floatformat:2 }}</td>
+            <td>{{ glitter.stock_units }}</td>
+            <td>{{ glitter.supplier.name }}</td>
+            <td><form action="{% url 'products:glitter_detail' pk=glitter.pk %}" method="get">
+              <button type="submit">Подробнее</button>
+            </form></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <div>
+    <a href="{% url 'index' %}">Back to index</a>
+  </div>
+
+  <script>
+    function showTable(componentType) {
+      var tables = document.querySelectorAll('.component-table');
+      tables.forEach(function(table) {
+        table.style.display = 'none';
+      });
+      if (componentType) {
+        document.getElementById(componentType).style.display = 'block';
+      }
+    }
+  </script>
+{% endblock %}

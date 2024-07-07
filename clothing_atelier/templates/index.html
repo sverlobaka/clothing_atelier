@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Clothing atelier Homepage
+{% endblock %}
+
+{% block body %}
+  <h1>Welcome to our clothing atelier!</h1>
+  <ul>
+    <li><a href="{% url 'products:collection_list'%}">Коллекции</a></li>
+    <li><a href="{% url 'products:consumable_list'%}">Список комплектующих</a></li>
+    <li><a href="{% url 'products:products_list' %}">Товары</a></li>
+  </ul>
+{% endblock %}
